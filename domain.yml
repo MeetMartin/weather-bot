@@ -1,0 +1,61 @@
+# python -m rasa_core.server -d models/dialogue -u models/nlu/default/current -o models/out.log
+# curl -XPOST localhost:5005/conversations/default/respond -d '{"query":"hi"}'
+
+# action_factory: remote
+
+slots:
+  PERSON:
+    type: text
+  GPE:
+    type: text
+  DATE:
+    type: text
+
+intents:
+  - greeting
+  - how_are_you
+  - thank_you
+  - bye
+  - confirm
+  - deny
+  - get_weather
+  - my_name_is
+
+actions:
+  - utter_greeting
+  - utter_how_i_am
+  - utter_you_are_welcome
+  - utter_bye
+  - utter_acknowledgement
+  - utter_its_nice_to_meet_you
+  #- action_get_weather
+  - actions.weather.ActionGetWeather
+
+templates:
+  utter_default:
+    - Per aspera ad astra.
+  utter_greeting:
+    - Hi!
+    - Hello!
+    - Hello, my friend.
+    - Hello there, my friend.
+  utter_how_i_am:
+    - I am doing ok.
+    - I am good.
+    - I am doing good.
+  utter_you_are_welcome:
+    - You are welcome.
+    - Welcome!
+    - You're welcome.
+    - You're very welcome.
+    - You are very welcome.
+  utter_bye:
+    - Bye.
+    - Good bye.
+  utter_acknowledgement:
+    - OK.
+    - As you say.
+    - Alright.
+  utter_its_nice_to_meet_you:
+    - It's nice to meet you, {PERSON}.
+    - Nice to meet you, {PERSON}.
