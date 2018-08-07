@@ -8,8 +8,6 @@ slots:
     type: text
   GPE:
     type: text
-  DATE:
-    type: text
 
 intents:
   - greeting
