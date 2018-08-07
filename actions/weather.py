@@ -15,7 +15,7 @@ class ActionGetWeather(Action):
 
     def run(self, dispatcher, tracker, domain):
         weather = Weather(unit=Unit.CELSIUS)
-        gpe = ('78735', tracker.get_slot('GPE'))[bool(tracker.get_slot('GPE'))]
+        gpe = ('Auckland', tracker.get_slot('GPE'))[bool(tracker.get_slot('GPE'))]
         result = weather.lookup_by_location(gpe)
         if result:
             condition = result.condition
